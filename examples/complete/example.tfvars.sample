@@ -1,0 +1,19 @@
+# Dont enter secrets into this file. Copy this file as example.tfvars and then add relavent config variables.
+
+# Required Variables
+snowflake_account = "snowflake_account_id"
+
+# Optional Variables
+snowflake_integration_owner_role = "ACCOUNTADMIN"
+aws_region                       = "us-west-2"
+prefix                           = "my_team"
+env                              = "dev" # prod or test or staging
+
+# Network variables
+deploy_lambda_in_vpc      = false
+lambda_security_group_ids = []
+lambda_subnet_ids         = []
+geff_image_version        = "latest"
+
+data_bucket_arns                 = ["arn:aws:s3:::data-bucket-1", "arn:aws:s3:::data-bucket-2"]
+snowflake_integration_user_roles = ["DATA_INGEST_RL"]
