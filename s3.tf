@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "geff_bucket" {
-  bucket = "${replace(local.geff_prefix, "_", "-")}-bucket" # Only hiphens + lower alphanumeric are allowed for bucket name
+  bucket = "${replace(local.storage_prefix, "_", "-")}-bucket" # Only hiphens + lower alphanumeric are allowed for bucket name
   acl    = "private"
 }
 

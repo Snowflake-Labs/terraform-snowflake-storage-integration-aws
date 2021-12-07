@@ -5,7 +5,7 @@ locals {
 }
 
 resource "snowflake_storage_integration" "geff_storage_integration" {
-  name    = "${upper(replace(local.geff_prefix, "-", "_"))}_STORAGE_INTEGRATION"
+  name    = "${upper(replace(local.storage_prefix, "-", "_"))}_STORAGE_INTEGRATION"
   type    = "EXTERNAL_STAGE"
   enabled = true
   storage_allowed_locations = concat(
