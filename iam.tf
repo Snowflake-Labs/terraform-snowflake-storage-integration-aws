@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "s3_reader_policy_doc" {
   statement {
     sid       = "S3ReadWritePerms"
     effect    = "Allow"
-    resources = ["${aws_s3_bucket.geff_bucket_2.arn}/*"]
+    resources = ["${aws_s3_bucket.geff_bucket.arn}/*"]
 
     actions = [
       "s3:PutObject",
@@ -45,7 +45,7 @@ data "aws_iam_policy_document" "s3_reader_policy_doc" {
   statement {
     sid       = "S3ListPerms"
     effect    = "Allow"
-    resources = [aws_s3_bucket.geff_bucket_2.arn]
+    resources = [aws_s3_bucket.geff_bucket.arn]
 
     actions = ["s3:ListBucket"]
 
