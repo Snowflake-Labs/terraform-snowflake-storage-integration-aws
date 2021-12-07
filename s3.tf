@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "geff_bucket" {
 }
 
 resource "aws_s3_bucket_object" "geff_meta_folder" {
-  bucket = aws_s3_bucket.geff_bucket.id
+  bucket = aws_s3_bucket.geff_bucket_2.id
   key    = "meta/"
 }
 
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "geff_s3_sns_topic_policy_doc" {
       test     = "ArnLike"
       variable = "aws:SourceArn"
       values = concat(
-        [aws_s3_bucket.geff_bucket.arn],
+        [aws_s3_bucket.geff_bucket_2.arn],
         var.data_bucket_arns
       )
     }
@@ -60,7 +60,7 @@ resource "aws_sns_topic_policy" "geff_s3_sns_topic_policy" {
 }
 
 resource "aws_s3_bucket_notification" "geff_s3_bucket_notification" {
-  bucket = aws_s3_bucket.geff_bucket.id
+  bucket = aws_s3_bucket.geff_bucket_2.id
 
   topic {
     topic_arn = aws_sns_topic.geff_bucket_sns.arn

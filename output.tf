@@ -5,12 +5,12 @@ output "storage_integration_name" {
 
 output "bucket_url" {
   description = "GEFF S3 Bucket URL"
-  value       = "s3://${aws_s3_bucket.geff_bucket.id}/"
+  value       = "s3://${aws_s3_bucket.geff_bucket_2.id}/"
 }
 
 output "bucket_arn" {
   description = "GEFF S3 Bucket ARN"
-  value       = aws_s3_bucket.geff_bucket.arn
+  value       = aws_s3_bucket.geff_bucket_2.arn
 }
 
 output "sns_topic_arn" {
