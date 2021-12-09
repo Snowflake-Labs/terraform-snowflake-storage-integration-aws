@@ -1,4 +1,4 @@
-# _Generic Storage Integration Framework (GSIF) Terraform Module_
+# _GSIF Terraform Module_
 
 
 This Generic Storage Integration Framework (GSIF) terraform module creates the base infrastructure to build storage only pipelines that load data from S3 to Snowflake. The resources created are:
