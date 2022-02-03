@@ -10,5 +10,4 @@ Snowflake Storage Integration
 4. AWS IAM Role with perms required to access the bucket, and publish/subscribe to SNS topic
 5. Trust relationship between the Snowflake Storage integration and AWS IAM Role
 
-
-![image](https://user-images.githubusercontent.com/72515998/152404016-5ceadc1b-d408-4011-9c30-f21c0574d5d2.png)
+![image](https://user-images.githubusercontent.com/72515998/152404729-2c08806f-c474-41f0-bedb-0afcaddb04e6.png)
