@@ -2,22 +2,17 @@ module "storage_integration" {
   source = "../../"
 
   # General
-  prefix = var.prefix
-  env    = var.env
-
-  # Snowflake
-  snowflake_account                = var.snowflake_account
-  snowflake_integration_owner_role = var.snowflake_integration_owner_role
+  snowflake_account                        = var.snowflake_account
+  snowflake_storage_integration_owner_role = var.snowflake_storage_integration_owner_role
+  prefix                                   = var.prefix
+  env                                      = var.env
 
   # AWS
-  aws_region = var.aws_region
-
+  aws_region                       = var.aws_region
   data_bucket_arns                 = var.data_bucket_arns
   snowflake_integration_user_roles = var.snowflake_integration_user_roles
-  storage_only                     = var.storage_only
 
   providers = {
     snowflake.storage_integration = snowflake.storage_integration
-    aws                           = aws
   }
 }

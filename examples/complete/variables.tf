@@ -4,8 +4,13 @@ variable "snowflake_account" {
   sensitive = true
 }
 
+variable "prefix" {
+  type        = string
+  description = "this will be the prefix used to name the Resources"
+}
+
 # Optional
-variable "snowflake_integration_owner_role" {
+variable "snowflake_storage_integration_owner_role" {
   type    = string
   default = "ACCOUNTADMIN"
 }
@@ -21,13 +26,6 @@ variable "aws_region" {
   type        = string
   default     = "us-west-2"
 }
-
-variable "prefix" {
-  type        = string
-  description = "this will be the prefix used to name the Resources"
-  default     = "example"
-}
-
 
 variable "env" {
   type    = string
