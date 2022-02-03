@@ -2,10 +2,12 @@ module "storage_integration" {
   source = "../../"
 
   # General
+  prefix = var.prefix
+  env    = var.env
+
+  # Snowflake
   snowflake_account                        = var.snowflake_account
   snowflake_storage_integration_owner_role = var.snowflake_storage_integration_owner_role
-  prefix                                   = var.prefix
-  env                                      = var.env
 
   # AWS
   aws_region                       = var.aws_region
