@@ -9,7 +9,5 @@ aws_region                       = "us-west-2"
 prefix                           = "my_team"
 env                              = "dev" # prod or test or staging
 
-
-
 data_bucket_arns                 = ["arn:aws:s3:::data-bucket-1", "arn:aws:s3:::data-bucket-2"]
 snowflake_integration_user_roles = ["DATA_INGEST_RL"]

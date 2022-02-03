@@ -5,10 +5,6 @@ module "storage_integration" {
   prefix = var.prefix
   env    = var.env
 
-  # Snowflake
-  snowflake_account                        = var.snowflake_account
-  snowflake_storage_integration_owner_role = var.snowflake_storage_integration_owner_role
-
   # AWS
   data_bucket_arns                 = var.data_bucket_arns
   snowflake_integration_user_roles = var.snowflake_integration_user_roles

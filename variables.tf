@@ -1,9 +1,4 @@
 # Required Variables
-variable "snowflake_account" {
-  type      = string
-  sensitive = true
-}
-
 variable "prefix" {
   type        = string
   description = <<EOT
