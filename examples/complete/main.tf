@@ -10,7 +10,6 @@ module "storage_integration" {
   snowflake_storage_integration_owner_role = var.snowflake_storage_integration_owner_role
 
   # AWS
-  aws_region                       = var.aws_region
   data_bucket_arns                 = var.data_bucket_arns
   snowflake_integration_user_roles = var.snowflake_integration_user_roles
 
