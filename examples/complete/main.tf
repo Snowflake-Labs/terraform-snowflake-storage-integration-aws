@@ -20,4 +20,9 @@ module "geff" {
   data_bucket_arns                 = var.data_bucket_arns
   snowflake_integration_user_roles = var.snowflake_integration_user_roles
   storage_only                     = var.storage_only
+
+  providers = {
+    snowflake.storage_integration = snowflake.storage_integration
+    aws                           = aws
+  }
 }
