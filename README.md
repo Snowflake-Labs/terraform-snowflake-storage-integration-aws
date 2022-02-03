@@ -8,4 +8,4 @@ This Generic Storage Integration Framework (GSIF) terraform module creates the b
 3. Snowflake Storage Integration
 4. SNS Topic
 
-![image](https://user-images.githubusercontent.com/72515998/152384417-8fd44df4-e5ce-48ee-a402-14da426369d3.png)
+![image](https://user-images.githubusercontent.com/72515998/152404016-5ceadc1b-d408-4011-9c30-f21c0574d5d2.png)
