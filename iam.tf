@@ -91,7 +91,7 @@ data "aws_iam_policy_document" "s3_reader_policy_doc" {
 }
 
 resource "aws_iam_role_policy" "s3_reader" {
-  name = "${local.geff_prefix}_rw_to_s3_bucket_policy"
+  name = local.s3_bucket_policy_name
   role = aws_iam_role.s3_reader.id
 
   policy = data.aws_iam_policy_document.s3_reader_policy_doc.json
