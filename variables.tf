@@ -41,6 +41,7 @@ locals {
 }
 
 locals {
+  s3_bucket_name        = "${replace(var.prefix, "_", "-")}-${var.env}-bucket" # Only hiphens + lower alphanumeric are allowed for bucket name
   s3_reader_role_name   = "${var.prefix}-s3-reader"
   s3_sns_policy_name    = "${var.prefix}-s3-sns-topic-policy"
   s3_bucket_policy_name = "${var.prefix}-rw-to-s3-bucket-policy"
