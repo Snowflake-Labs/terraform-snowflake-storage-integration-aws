@@ -4,7 +4,9 @@ locals {
   ]
 }
 
-resource "snowflake_storage_integration" "geff_storage_integration" {
+resource "snowflake_storage_integration" "this" {
+  provider = snowflake.storage_integration
+
   name    = "${upper(replace(local.storage_prefix, "-", "_"))}_STORAGE_INTEGRATION"
   type    = "EXTERNAL_STAGE"
   enabled = true
@@ -16,8 +18,9 @@ resource "snowflake_storage_integration" "geff_storage_integration" {
   storage_aws_role_arn = "arn:aws:iam::${local.account_id}:role/${local.s3_reader_role_name}"
 }
 
-resource "snowflake_integration_grant" "geff_storage_integration_grant" {
-  integration_name = snowflake_storage_integration.geff_storage_integration.name
+resource "snowflake_integration_grant" "this" {
+  provider         = snowflake.storage_integration
+  integration_name = snowflake_storage_integration.this.name
 
   privilege = "USAGE"
   roles     = var.snowflake_integration_user_roles

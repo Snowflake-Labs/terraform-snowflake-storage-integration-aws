@@ -13,6 +13,11 @@ variable "prefix" {
 }
 
 # Optional Variables
+variable "snowflake_storage_integration_owner_role" {
+  type    = string
+  default = "ACCOUNTADMIN"
+}
+
 variable "aws_region" {
   description = "The AWS region in which the AWS infrastructure is created."
   default     = "us-west-2"
@@ -51,12 +56,12 @@ locals {
 }
 
 locals {
-  storage_prefix = "${var.prefix}_${var.env}"
+  storage_prefix = "${var.prefix}-${var.env}"
 }
 
 locals {
-  s3_reader_role_name   = "${local.storage_prefix}_s3_reader"
-  s3_sns_policy_name    = "${local.storage_prefix}_s3_sns_topic_policy"
-  s3_bucket_policy_name = "${local.storage_prefix}_rw_to_s3_bucket_policy"
-  s3_sns_topic_name     = "${local.storage_prefix}_bucket_sns"
+  s3_reader_role_name   = "${local.storage_prefix}-s3-reader"
+  s3_sns_policy_name    = "${local.storage_prefix}-s3-sns-topic-policy"
+  s3_bucket_policy_name = "${local.storage_prefix}-rw-to-s3-bucket-policy"
+  s3_sns_topic_name     = "${local.storage_prefix}-bucket-sns"
 }
