@@ -41,12 +41,8 @@ locals {
 }
 
 locals {
-  storage_prefix = "${var.prefix}-${var.env}"
-}
-
-locals {
-  s3_reader_role_name   = "${local.storage_prefix}-s3-reader"
-  s3_sns_policy_name    = "${local.storage_prefix}-s3-sns-topic-policy"
-  s3_bucket_policy_name = "${local.storage_prefix}-rw-to-s3-bucket-policy"
-  s3_sns_topic_name     = "${local.storage_prefix}-bucket-sns"
+  s3_reader_role_name   = "${var.prefix}-s3-reader"
+  s3_sns_policy_name    = "${var.prefix}-s3-sns-topic-policy"
+  s3_bucket_policy_name = "${var.prefix}-rw-to-s3-bucket-policy"
+  s3_sns_topic_name     = "${var.prefix}-bucket-sns"
 }

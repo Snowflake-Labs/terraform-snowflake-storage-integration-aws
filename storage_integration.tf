@@ -7,7 +7,7 @@ locals {
 resource "snowflake_storage_integration" "this" {
   provider = snowflake.storage_integration
 
-  name    = "${upper(replace(local.storage_prefix, "-", "_"))}_STORAGE_INTEGRATION"
+  name    = "${upper(replace(var.prefix, "-", "_"))}_STORAGE_INTEGRATION"
   type    = "EXTERNAL_STAGE"
   enabled = true
   storage_allowed_locations = concat(
