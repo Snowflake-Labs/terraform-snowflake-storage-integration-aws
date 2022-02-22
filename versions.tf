@@ -4,12 +4,12 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.64.2"
+      version = "4.2.0"
     }
 
     snowflake = {
       source  = "chanzuckerberg/snowflake"
-      version = ">= 0.25.29"
+      version = "0.25.36"
 
       configuration_aliases = [
         snowflake.storage_integration
