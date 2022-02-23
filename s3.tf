@@ -7,7 +7,7 @@ resource "aws_s3_bucket_acl" "geff_bucket_acl" {
   acl    = "private"
 }
 
-resource "aws_s3_bucket_object" "geff_meta_folder" {
+resource "aws_s3_object" "geff_meta_folder" {
   bucket = aws_s3_bucket.geff_bucket.id
   key    = "meta/"
 }
