@@ -11,5 +11,6 @@ module "storage_integration" {
 
   providers = {
     snowflake.storage_integration = snowflake.storage_integration
+    aws                           = aws
   }
 }
