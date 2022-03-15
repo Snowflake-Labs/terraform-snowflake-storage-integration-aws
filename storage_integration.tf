@@ -5,7 +5,7 @@ locals {
 }
 
 resource "snowflake_storage_integration" "this" {
-  provider = snowflake.storage_integration
+  provider = snowflake.storage_integration_role
 
   name    = "${upper(replace(var.prefix, "-", "_"))}_STORAGE_INTEGRATION"
   type    = "EXTERNAL_STAGE"
@@ -19,7 +19,7 @@ resource "snowflake_storage_integration" "this" {
 }
 
 resource "snowflake_integration_grant" "this" {
-  provider         = snowflake.storage_integration
+  provider         = snowflake.storage_integration_role
   integration_name = snowflake_storage_integration.this.name
 
   privilege = "USAGE"
