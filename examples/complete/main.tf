@@ -10,7 +10,7 @@ module "storage_integration" {
   snowflake_integration_user_roles = var.snowflake_integration_user_roles
 
   providers = {
-    snowflake.storage_integration = snowflake.storage_integration
-    aws                           = aws
+    snowflake.storage_integration_role = snowflake.storage_integration_role
+    aws                                = aws
   }
 }
