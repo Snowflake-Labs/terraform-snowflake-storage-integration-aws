@@ -28,6 +28,12 @@ variable "data_bucket_arns" {
   description = "List of Bucket ARNs for the s3_reader role to read from."
 }
 
+variable "arn_format" {
+  type        = string
+  description = "ARN format could be aws or aws-us-gov. Defaults to non-gov."
+  default     = "aws"
+}
+
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 data "aws_partition" "current" {}
