@@ -15,7 +15,7 @@ resource "snowflake_storage_integration" "this" {
     [for bucket_id in local.pipeline_bucket_ids : "s3://${bucket_id}/"]
   )
   storage_provider     = "S3"
-  storage_aws_role_arn = "arn:aws:iam::${local.account_id}:role/${local.s3_reader_role_name}"
+  storage_aws_role_arn = "arn:${var.arn_format}:iam::${local.account_id}:role/${local.s3_reader_role_name}"
 }
 
 resource "snowflake_integration_grant" "this" {
