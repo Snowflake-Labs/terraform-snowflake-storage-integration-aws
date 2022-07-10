@@ -2,6 +2,7 @@ locals {
   pipeline_bucket_ids = [
     for bucket_arn in var.data_bucket_arns : element(split(":::", bucket_arn), 1)
   ]
+  storage_provider = length(regexall(".*gov.*", local.aws_region)) > 0 ? "S3GOV" : "S3"
 }
 
 resource "snowflake_storage_integration" "this" {
@@ -11,10 +12,10 @@ resource "snowflake_storage_integration" "this" {
   type    = "EXTERNAL_STAGE"
   enabled = true
   storage_allowed_locations = concat(
-    ["s3://${aws_s3_bucket.geff_bucket.id}/"],
+    ["${local.storage_provider}://${aws_s3_bucket.geff_bucket.id}/"],
     [for bucket_id in local.pipeline_bucket_ids : "s3://${bucket_id}/"]
   )
-  storage_provider     = "S3"
+  storage_provider     = local.storage_provider
   storage_aws_role_arn = "arn:${var.arn_format}:iam::${local.account_id}:role/${local.s3_reader_role_name}"
 }
 
