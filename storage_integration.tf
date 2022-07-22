@@ -2,7 +2,7 @@ locals {
   pipeline_bucket_ids = [
     for bucket_arn in var.data_bucket_arns : element(split(":::", bucket_arn), 1)
   ]
-  storage_provider = length(regexall(".*gov.*", local.aws_region)) > 0 ? "s3gov" : "s3"
+  storage_provider = length(regexall(".*gov.*", local.aws_region)) > 0 ? "S3GOV" : "S3"
 }
 
 resource "snowflake_storage_integration" "this" {
