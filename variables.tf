@@ -22,6 +22,12 @@ variable "snowflake_integration_user_roles" {
   description = "List of roles to which GEFF infra will GRANT USAGE ON INTEGRATION perms."
 }
 
+variable "s3_bucket_name" {
+  type        = string
+  default     = ""
+  description = "Custom S3 bucket name."
+}
+
 variable "data_bucket_arns" {
   type        = list(string)
   default     = []
@@ -44,7 +50,7 @@ locals {
 }
 
 locals {
-  s3_bucket_name        = "${replace(var.prefix, "_", "-")}-${var.env}-bucket" # Only hiphens + lower alphanumeric are allowed for bucket name
+  s3_bucket_name        = var.s3_bucket_name == "" ? "${replace(var.prefix, "_", "-")}-${var.env}-bucket" : "${replace(var.s3_bucket_name, "_", "-")}" # Only hiphens + lower alphanumeric are allowed for bucket name
   s3_reader_role_name   = "${var.prefix}-s3-reader"
   s3_sns_policy_name    = "${var.prefix}-s3-sns-topic-policy"
   s3_bucket_policy_name = "${var.prefix}-rw-to-s3-bucket-policy"
