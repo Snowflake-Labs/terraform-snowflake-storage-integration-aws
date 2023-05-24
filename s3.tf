@@ -6,7 +6,7 @@ resource "aws_s3_bucket_ownership_controls" "geff_bucket_ownership_controls" {
   bucket = aws_s3_bucket.geff_bucket.id
 
   rule {
-    object_ownership = "BucketOwnerPreferred"
+    object_ownership = "BucketOwnerEnforced"
   }
 }
 
