@@ -9,7 +9,7 @@ terraform {
 
     snowflake = {
       source  = "Snowflake-Labs/snowflake"
-      version = "~> 0.64.0"
+      version = ">= 0.64.0"
 
       configuration_aliases = [
         snowflake.storage_integration_role,
