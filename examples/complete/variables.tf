@@ -44,6 +44,12 @@ variable "arn_format" {
   default     = "aws"
 }
 
+variable "bucket_object_ownership_settings" {
+  type        = string
+  description = "The settings that will impact ACLs and ownership of objects within the bucket."
+  default     = "BucketOwnerEnforced"
+}
+
 data "aws_caller_identity" "current" {}
 
 locals {

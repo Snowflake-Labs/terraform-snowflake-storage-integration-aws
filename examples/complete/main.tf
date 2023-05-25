@@ -11,6 +11,7 @@ module "storage_integration" {
 
   # Snowflake
   snowflake_integration_user_roles = var.snowflake_integration_user_roles
+  bucket_object_ownership_settings = var.bucket_object_ownership_settings
 
   providers = {
     snowflake.storage_integration_role = snowflake.storage_integration_role
