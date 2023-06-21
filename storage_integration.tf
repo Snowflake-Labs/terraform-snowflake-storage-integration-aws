@@ -19,6 +19,7 @@ resource "snowflake_storage_integration" "this" {
   storage_aws_role_arn = "arn:${var.arn_format}:iam::${local.account_id}:role/${local.s3_reader_role_name}"
 }
 
+
 resource "snowflake_integration_grant" "this" {
   provider         = snowflake.storage_integration_role
   integration_name = snowflake_storage_integration.this.name
