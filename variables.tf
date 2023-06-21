@@ -46,6 +46,7 @@ variable "bucket_object_ownership_settings" {
   default     = "BucketOwnerEnforced"
 }
 
+
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 data "aws_partition" "current" {}

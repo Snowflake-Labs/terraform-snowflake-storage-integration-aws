@@ -11,6 +11,7 @@ resource "aws_s3_bucket_ownership_controls" "geff_bucket_ownership_controls" {
 }
 
 resource "aws_s3_bucket_acl" "geff_bucket_acl" {
+  count  = var.bucket_object_ownership_settings == "BucketOwnerPreferred" ? 1 : 0
   bucket = aws_s3_bucket.geff_bucket.id
   acl    = "private"
 
