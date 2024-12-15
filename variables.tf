@@ -34,12 +34,6 @@ variable "data_bucket_arns" {
   description = "List of Bucket ARNs for the s3_reader role to read from."
 }
 
-variable "arn_format" {
-  type        = string
-  description = "ARN format could be aws or aws-us-gov. Defaults to non-gov."
-  default     = "aws"
-}
-
 variable "bucket_object_ownership_settings" {
   type        = string
   description = "The settings that will impact ACLs and ownership of objects within the bucket."
@@ -52,11 +46,27 @@ data "aws_region" "current" {}
 data "aws_partition" "current" {}
 
 locals {
-  account_id = data.aws_caller_identity.current.account_id
-  aws_region = data.aws_region.current.name
-}
+  account_id     = data.aws_caller_identity.current.account_id
+  aws_region     = data.aws_region.current.name
+  aws_partition  = data.aws_partition.current.partition
+  aws_dns_suffix = data.aws_partition.current.dns_suffix
 
-locals {
+  # Use SnowSQL Terraform provider if the official Snowflake Terraform provider does not support the specific cloud.
+  snowflake_storage_provider_maps = {
+    aws = {
+      snowflake_storage_provider  = "S3"
+      terraform_resource_provider = "snowflake"
+    }
+    aws-us-gov = {
+      snowflake_storage_provider  = "S3GOV"
+      terraform_resource_provider = "snowflake"
+    }
+    aws-cn = {
+      snowflake_storage_provider  = "S3CHINA"
+      terraform_resource_provider = "snowsql"
+    }
+  }
+
   s3_bucket_name        = var.s3_bucket_name == "" ? "${replace(var.prefix, "_", "-")}-${var.env}-bucket" : "${replace(var.s3_bucket_name, "_", "-")}" # Only hiphens + lower alphanumeric are allowed for bucket name
   s3_reader_role_name   = "${var.prefix}-s3-reader"
   s3_sns_policy_name    = "${var.prefix}-s3-sns-topic-policy"

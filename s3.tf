@@ -64,7 +64,7 @@ data "aws_iam_policy_document" "geff_s3_sns_topic_policy_doc" {
 
     principals {
       type        = "AWS"
-      identifiers = [snowflake_storage_integration.this.storage_aws_iam_user_arn]
+      identifiers = [local.storage_integration_user_arn]
     }
   }
 }

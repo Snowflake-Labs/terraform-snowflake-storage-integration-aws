@@ -15,11 +15,11 @@ resource "aws_iam_role" "s3_reader" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          AWS = snowflake_storage_integration.this.storage_aws_iam_user_arn
+          AWS = local.storage_integration_user_arn
         }
         Condition = {
           StringEquals = {
-            "sts:ExternalId" = snowflake_storage_integration.this.storage_aws_external_id
+            "sts:ExternalId" = local.storage_integration_external_id
           }
         }
       }
