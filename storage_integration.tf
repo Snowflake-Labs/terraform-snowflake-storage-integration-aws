@@ -13,7 +13,7 @@ locals {
     [for bucket_id in local.pipeline_bucket_ids : "${local.snowflake_storage_provider}://${bucket_id}/"]
   )
 
-  storage_allowed_locations_snowsql = join(",", [for i in local.storage_allowed_locations: join("", ["'", i, "'"])])
+  storage_allowed_locations_snowsql = join(",", [for i in local.storage_allowed_locations : join("", ["'", i, "'"])])
 }
 
 resource "snowflake_storage_integration" "this" {
@@ -23,6 +23,7 @@ resource "snowflake_storage_integration" "this" {
   name    = local.storage_integration_name
   type    = "EXTERNAL_STAGE"
   enabled = true
+
   storage_allowed_locations = local.storage_allowed_locations
   storage_provider          = local.snowflake_storage_provider
   storage_aws_role_arn      = "arn:${local.aws_partition}:iam::${local.account_id}:role/${local.s3_reader_role_name}"
