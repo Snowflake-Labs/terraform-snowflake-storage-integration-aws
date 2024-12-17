@@ -55,9 +55,9 @@ resource "snowsql_exec" "snowflake_storage_integration" {
 }
 
 locals {
-  storage_integration_user_arn = local.terraform_resource_provider == "snowflake" ? snowflake_storage_integration.this[0].storage_aws_iam_user_arn : [for map in jsondecode(nonsensitive(snowsql_exec.snowflake_storage_integration[0].read_results)): map if map.property == "STORAGE_AWS_IAM_USER_ARN"][0]["property_value"]
+  storage_integration_user_arn = local.terraform_resource_provider == "snowflake" ? snowflake_storage_integration.this[0].storage_aws_iam_user_arn : [for map in jsondecode(nonsensitive(snowsql_exec.snowflake_storage_integration[0].read_results)) : map if map.property == "STORAGE_AWS_IAM_USER_ARN"][0]["property_value"]
 
-  storage_integration_external_id = local.terraform_resource_provider == "snowflake" ? snowflake_storage_integration.this[0].storage_aws_external_id : [for map in jsondecode(nonsensitive(snowsql_exec.snowflake_storage_integration[0].read_results)): map if map.property == "STORAGE_AWS_EXTERNAL_ID"][0]["property_value"]
+  storage_integration_external_id = local.terraform_resource_provider == "snowflake" ? snowflake_storage_integration.this[0].storage_aws_external_id : [for map in jsondecode(nonsensitive(snowsql_exec.snowflake_storage_integration[0].read_results)) : map if map.property == "STORAGE_AWS_EXTERNAL_ID"][0]["property_value"]
 }
 
 resource "snowflake_integration_grant" "this" {
