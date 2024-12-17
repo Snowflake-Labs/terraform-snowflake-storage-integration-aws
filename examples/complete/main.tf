@@ -6,7 +6,6 @@ module "storage_integration" {
   env    = var.env
 
   # AWS
-  arn_format       = var.arn_format
   data_bucket_arns = var.data_bucket_arns
 
   # Snowflake
@@ -15,6 +14,7 @@ module "storage_integration" {
 
   providers = {
     snowflake.storage_integration_role = snowflake.storage_integration_role
+    snowsql.storage_integration_role   = snowsql.storage_integration_role
     aws                                = aws
   }
 }
